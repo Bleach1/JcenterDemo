@@ -1,0 +1,40 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    ext.objectboxVersion = '2.2.0'
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.0.1'
+        classpath 'com.novoda:bintray-release:0.8.0'
+        classpath "io.objectbox:objectbox-gradle-plugin:$objectboxVersion"
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+tasks.withType(Javadoc) {
+    options.addStringOption('Xdoclint:none', '-quiet')
+    options.addStringOption('encoding', 'UTF-8')
+}
+allprojects {
+    repositories {
+        maven{url "https://jitpack.io"}
+        google()
+        jcenter()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+ext {
+    userOrg = 'jcenterljn'
+    groupId = 'com.jcenterljn.Ljn'
+    uploadName = 'android-basiclib-apifactory'
+    publishVersion = '1.0.0'
+    desc = 'Request code can be generated automatically'
+    website = 'https://github.com/HouXiaohu/androidbasiclib'
+    licences = ['Apache-2.0']
+}
